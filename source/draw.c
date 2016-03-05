@@ -2,6 +2,24 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
+/*
+ * This was part of Decrypt9WIP, written by Archshit, d03k and others.
+ * Copyright (C) 2016 173210 <root.3.173210@live.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * version 2 as published by the Free Software Foundation
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
@@ -89,7 +107,7 @@ void DrawStringF(int x, int y, bool use_top, const char *format, ...)
 
 void Screenshot(const char* path)
 {
-    u8* buffer = (u8*) 0x21000000; // careful, this area is used by other functions in Decrypt9
+    u8* buffer = (u8*) 0x21000000; // careful, this area is used by other functions in r3Tools
     u8* buffer_t = buffer + (400 * 240 * 3);
     u8 bmp_header[54] = {
         0x42, 0x4D, 0x36, 0xCA, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x36, 0x00, 0x00, 0x00, 0x28, 0x00,

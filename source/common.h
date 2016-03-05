@@ -1,3 +1,21 @@
+/*
+ * This was part of Decrypt9WIP, written by Archshit, d03k and others.
+ * Copyright (C) 2016 173210 <root.3.173210@live.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * version 2 as published by the Free Software Foundation
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
 #pragma once
 
 #include <inttypes.h>
@@ -39,9 +57,9 @@
     (((v) % (a)) ? ((v) + (a) - ((v) % (a))) : (v))
     
 // work files / directories
-#define GAME_DIR "/D9Game"
-#define WORK_DIR "/Decrypt9"
-#define LOG_FILE "Decrypt9.log"
+#define GAME_DIR "/r3tools/game"
+#define WORK_DIR "/r3tools"
+#define LOG_FILE "r3tools.log"
 
 inline u32 strchrcount(const char* str, char symbol) {
     u32 count = 0;

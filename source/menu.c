@@ -1,3 +1,21 @@
+/*
+ * This was part of Decrypt9WIP, written by Archshit, d03k and others.
+ * Copyright (C) 2016 173210 <root.3.173210@live.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * version 2 as published by the Free Software Foundation
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
 #include "menu.h"
 #include "draw.h"
 #include "hid.h"
@@ -13,7 +31,7 @@ u32 ScrollOutput()
 {
     u32 log_start = LogWrite(NULL);
     
-    // careful, these areas are used by other functions in Decrypt9
+    // careful, these areas are used by other functions in r3Tools
     char** logptr = (char**) 0x20316000;
     char* logtext = (char*)  0x20400000;
     u32 log_size = 0; // log size
@@ -237,7 +255,7 @@ u32 ProcessMenu(MenuInfo* info, u32 n_entries_main)
         }
         mainMenu.n_entries = n_entries_main;
         #ifndef BUILD_NAME
-        mainMenu.name = "Decrypt9 Main Menu";
+        mainMenu.name = "r3Tools Main Menu";
         #else
         mainMenu.name = BUILD_NAME;
         #endif
