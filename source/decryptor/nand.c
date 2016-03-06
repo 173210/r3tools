@@ -1,3 +1,21 @@
+/*
+ * This was part of Decrypt9WIP, written by Archshit, d03k and others.
+ * Copyright (C) 2016 173210 <root.3.173210@live.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * version 2 as published by the Free Software Foundation
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
 #include "fs.h"
 #include "draw.h"
 #include "hid.h"
@@ -19,7 +37,7 @@ static PartitionInfo partitions[] = {
     { "CTRNAND", {0xE9, 0x00, 0x00, 0x43, 0x54, 0x52, 0x20, 0x20}, 0x0B95AE00, 0x41D2D200, 0x5, AES_CNT_CTRNAND_MODE }  // N3DS
 };
 
-static u32 emunand_header = 0;
+u32 emunand_header = 0;
 static u32 emunand_offset = 0;
 
 

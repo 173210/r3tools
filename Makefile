@@ -17,6 +17,7 @@ include $(DEVKITARM)/ds_rules
 # SPECS is the directory containing the important build and link files
 #---------------------------------------------------------------------------------
 export TARGET	:=	r3tools
+export RELEASE	:=	release
 BUILD		:=	build
 SOURCES		:=	source source/fatfs source/decryptor source/abstraction
 DATA		:=	data
@@ -73,7 +74,6 @@ ifneq ($(BUILD),$(notdir $(CURDIR)))
 
 export OUTPUT_D	:=	$(CURDIR)/output
 export OUTPUT	:=	$(OUTPUT_D)/$(TARGET)
-export RELEASE	:=	$(CURDIR)/release
 
 export VPATH	:=	$(foreach dir,$(SOURCES),$(CURDIR)/$(dir)) \
 			$(foreach dir,$(DATA),$(CURDIR)/$(dir))
@@ -108,7 +108,8 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
 
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib)
 
-.PHONY: common clean all gateway bootstrap cakehax cakerop brahma release
+.PHONY: common clean all gateway bootstrap cakehax cakerop brahma \
+	release release-rxmode
 
 #---------------------------------------------------------------------------------
 all: brahma
@@ -146,21 +147,28 @@ brahma: submodules bootstrap
 	@mv BrahmaLoader/output/*.3dsx $(OUTPUT_D)
 	@mv BrahmaLoader/output/*.smdh $(OUTPUT_D)
 	
-release:
-	@rm -fr $(BUILD) $(OUTPUT_D) $(RELEASE)
+$(BUILD)/rxmode: rxmode
+	mkdir -p $@
+	$(MAKE) -C $< BUILD=../$@
+
+release-rxmode: rxmode
+	$(MAKE) -C $< BUILD=../$(BUILD)/rxmode RELEASE=../$(RELEASE) release
+	
+release: release-rxmode
+	@rm -fr $(BUILD) $(OUTPUT_D)
 	@make --no-print-directory gateway
 	@-make --no-print-directory cakerop
 	@rm -fr $(BUILD) $(OUTPUT).bin $(OUTPUT).elf $(CURDIR)/$(LOADER)/data
 	@-make --no-print-directory brahma
 	@[ -d $(RELEASE) ] || mkdir -p $(RELEASE)
-	@[ -d $(RELEASE)/$(TARGET) ] || mkdir -p $(RELEASE)/$(TARGET)
+	@[ -d $(RELEASE)/3ds/$(TARGET) ] || mkdir -p $(RELEASE)/3ds/$(TARGET)
 	@[ -d $(RELEASE)/scripts ] || mkdir -p $(RELEASE)/scripts
 	@cp $(OUTPUT_D)/Launcher.dat $(RELEASE)
 	@-cp $(OUTPUT).bin $(RELEASE)
 	@-cp $(OUTPUT).dat $(RELEASE)
 	@-cp $(OUTPUT).nds $(RELEASE)
-	@-cp $(OUTPUT).3dsx $(RELEASE)/$(TARGET)
-	@-cp $(OUTPUT).smdh $(RELEASE)/$(TARGET)
+	@-cp $(OUTPUT).3dsx $(RELEASE)/3ds/$(TARGET)
+	@-cp $(OUTPUT).smdh $(RELEASE)/3ds/$(TARGET)
 	@cp $(CURDIR)/scripts/*.py $(RELEASE)/scripts
 	@cp $(CURDIR)/README.md $(RELEASE)
 	@-[ ! -n "$(strip $(THEME))" ] || (mkdir $(RELEASE)/$(THEME) && cp $(CURDIR)/resources/$(THEME)/*.bin $(RELEASE)/$(THEME))
