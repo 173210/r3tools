@@ -74,7 +74,7 @@ u32 LoadKeyXFromFile(u32 keyslot)
     char filename[32];
     u8 keyX[16] = {0};
     
-    snprintf(filename, 31, "slot0x%02XKeyX.bin", (unsigned int) keyslot);
+    snprintf(filename, 31, WORK_DIR "/key/%02Xh.bin", (unsigned int) keyslot);
     if (!FileOpen(filename)) {
         Debug("Loading %s: not found", filename);
         return 1;
