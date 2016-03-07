@@ -16,6 +16,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+#include "decryptor/key.h"
 #include "decryptor/nand.h"
 #include "fatfs/ff.h"
 #include "cfw.h"
@@ -71,6 +72,10 @@ u32 cfw(u32 param)
 			Debug("Unknown Platform: %d", r);
 			return 1;
 	}
+
+	r = LoadAllKeyXFromFile();
+	if (r != FR_OK)
+		return r;
 
 	sprintf(path, "/" FIRM_PATH_FMT, TID_HI_FIRM, tid);
 	r = loadFirm(path, &fsz);

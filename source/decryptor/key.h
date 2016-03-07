@@ -20,6 +20,9 @@
 #define DECRYPTOR_KEY_H
 
 #include "common.h"
+#include "fatfs/ff.h"
+
 u32 LoadKeyXFromFile(u32 keyslot);
+FRESULT LoadAllKeyXFromFile(void);
 
 #endif
