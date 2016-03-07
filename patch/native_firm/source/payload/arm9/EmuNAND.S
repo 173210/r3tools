@@ -27,18 +27,18 @@ nandHook:
 	ldr	r4, =0x080D8670
 #endif
 	cmp	r5, r4
-	beq	loc_801A310
+	beq	validateSize
 	mov	r5, r4
 	cmp	r6, #0
 	ldreq	r6, nandSector
 
-loc_801A310:
+validateSize:
 	mov	r4, r0
 	movs	r0, r1, lsl #23
-	beq	loc_801A33C
+	beq	readSector
 	blx	0x08062A28
 
-loc_801A33C:
+readSector:
 	mov	r0, r1, lsr #9
 	add	r0, r0, r6
 	str	r0, [sp]
