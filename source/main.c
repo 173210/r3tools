@@ -34,10 +34,10 @@
 MenuInfo menu[] =
 {
     {
-        "rxMode", 2,
+        "CFW", 2,
         {
-            { "rxMode (EmuNAND)",                       &rxMode,      N_EMUNAND },
-            { "rxMode (SysNAND)",                       &rxMode,      0 }
+            { "CFW (EmuNAND)",                &cfw,                  N_EMUNAND },
+            { "CFW (SysNAND)",                &cfw,                  0 }
         }
     },
     {

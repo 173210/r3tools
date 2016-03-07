@@ -57,8 +57,8 @@ static void memdump(wchar_t *filename, unsigned char *buf, size_t size)
 static void patchLabel()
 {
 	static const char verOrig[VER_LEN] = "Ver.";
-	static const char verEmu[VER_LEN] = "RX-E";
-	static const char verSys[VER_LEN] = "RX-S";
+	static const char verEmu[VER_LEN] = "R3-E";
+	static const char verSys[VER_LEN] = "R3-S";
 	uintptr_t top, btm;
 	wchar_t *p;
 	const char *src;
@@ -238,7 +238,7 @@ _Noreturn void mainHandler(int regs[REG_NUM], const char *type)
 		writeArmB(arm11Swi, arm11Code);
 
 		initScr();
-		scrPuts("\nException Information by rxMode\n\n\n\n"
+		scrPuts("\nException Information by r3Tools\n\n\n\n"
 			"CPU: ARM9\tType: ");
 		scrPuts(type);
 

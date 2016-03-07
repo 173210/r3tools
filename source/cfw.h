@@ -21,6 +21,6 @@
 
 #include "common.h"
 
-u32 rxMode(u32 param);
+u32 cfw(u32 param);
 
 #endif

@@ -109,7 +109,7 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib)
 
 .PHONY: common clean all gateway bootstrap cakehax cakerop brahma \
-	release release-rxmode
+	release release-patch
 
 #---------------------------------------------------------------------------------
 all: brahma
@@ -147,14 +147,14 @@ brahma: submodules bootstrap
 	@mv BrahmaLoader/output/*.3dsx $(OUTPUT_D)
 	@mv BrahmaLoader/output/*.smdh $(OUTPUT_D)
 	
-$(BUILD)/rxmode: rxmode
+$(BUILD)/patch: patch
 	mkdir -p $@
 	$(MAKE) -C $< BUILD=../$@
 
-release-rxmode: rxmode
-	$(MAKE) -C $< BUILD=../$(BUILD)/rxmode RELEASE=../$(RELEASE) release
+release-patch: patch
+	$(MAKE) -C $< BUILD=../$(BUILD)/patch RELEASE=../$(RELEASE) release
 	
-release: release-rxmode
+release: release-patch
 	@rm -fr $(BUILD) $(OUTPUT_D)
 	@make --no-print-directory gateway
 	@-make --no-print-directory cakerop

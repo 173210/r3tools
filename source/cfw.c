@@ -44,7 +44,7 @@ static int loadFirm(TCHAR *path, UINT *fsz)
 	return ((FirmHdr *)FIRM_ADDR)->magic == 0x4D524946 ? 0 : -1;
 }
 
-u32 rxMode(u32 param)
+u32 cfw(u32 param)
 {
 	const Elf32_Addr line = 32;
 	char path[_MAX_LFN + 1];
