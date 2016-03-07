@@ -1,3 +1,4 @@
+@ Copyright (C) 2016 173210 <root.3.173210@live.com>
 @ Copyright (C) 2015 The PASTA Team
 @
 @ This program is free software; you can redistribute it and/or
@@ -35,11 +36,7 @@ loc_801A310:
 	mov	r4, r0
 	movs	r0, r1, lsl #23
 	beq	loc_801A33C
-#ifdef PLATFORM_KTR
 	blx	0x08062A28
-#else
-	blx	0x08062A28
-#endif
 
 loc_801A33C:
 	mov	r0, r1, lsr #9
