@@ -9,9 +9,6 @@ SECTIONS
 	. = 0x0801B564;
 	.patch.k9.flags : { *(.patch.k9.flags) }
 
-	. = process9 + 0x002F8;
-	.patch.p9.keyx : { *(.patch.p9.keyx) }
-
 	. = process9 + 0x3563C;
 	.patch.p9.sig.1 : { *(.patch.p9.sig.1) }
 

@@ -49,8 +49,7 @@ LDSCRIPT_ROM	:= ctr_rom.ld
 LDSCRIPT_RAM	:= ctr_ram.ld
 
 OBJS	+= $(BUILD)/payload/arm9/thread/handlers.o	\
-	$(BUILD)/payload/arm11/hookswi.o	\
-	$(BUILD)/p9_keyx_spoof.o
+	$(BUILD)/payload/arm11/hookswi.o
 endif
 
 $(call DEPDIR,$(BUILD)/$(TARGET).elf $(OBJS))

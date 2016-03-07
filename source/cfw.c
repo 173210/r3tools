@@ -124,8 +124,8 @@ u32 cfw(u32 param)
 			}
 */
 
-			((void (*)(uint32_t, void *, uintptr_t))ehdr->e_entry)(
-				emunand_header * NAND_SECTOR_SIZE, NULL, 0x1FFFFFF8);
+			((void (*)(uint32_t, uintptr_t))ehdr->e_entry)(
+				emunand_header * NAND_SECTOR_SIZE, 0x1FFFFFF8);
 
 			__builtin_unreachable();
 		}
