@@ -86,6 +86,9 @@ u32 cfw(u32 param)
 
 	((FirmHdr *)FIRM_ADDR)->arm9Entry = 0x0801B01C;
 
+	// Enable extended ARM9 internal memory of KTR
+	*(volatile uint8_t *)0x10000200 = 1;
+
 	sprintf(path, "/" FIRM_PATCH_PATH_FMT, TID_HI_FIRM, tid);
 	r = f_open(&fd, path, FA_READ);
 	if (r != FR_OK)
