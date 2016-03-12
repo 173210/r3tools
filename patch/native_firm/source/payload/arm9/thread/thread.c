@@ -96,8 +96,7 @@ static void patchLabel()
 	}
 }
 
-#ifndef PLATFORM_KTR 
-	#ifndef DEBUG_DUMP_RAM
+#ifndef PLATFORM_KTR
 
 #define FB_HEIGHT 240
 #define FB_WIDTH 320
@@ -260,16 +259,13 @@ static void initExceptionHandler()
 	*(void **)0x0800002C = handleData;
 	*(void **)0x08000020 = handlePrefetch;
 }
-	#endif
 #endif
 
 _Noreturn void thread()
 {
 
 #ifndef PLATFORM_KTR
-	#ifndef DEBUG_DUMP_RAM
-		initExceptionHandler();
-	#endif
+	initExceptionHandler();
 #endif
 
 	while (1) {
