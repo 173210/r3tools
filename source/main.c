@@ -28,7 +28,7 @@
 #include "decryptor/titlekey.h"
 #include "decryptor/selftest.h"
 
-#define SUBMENU_START 6
+#define SUBMENU_START 7
 
 
 MenuInfo menu[] =
